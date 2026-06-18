@@ -1,0 +1,102 @@
+{
+  "$schema": "https://schemas.designtokens.org/draft-2024",
+  "color": {
+    "$type": "color",
+    "brand": {
+      "primary": {
+        "$value": "#8B5CF6",
+        "$description": "Violet. Primary brand color — gradients, key borders, glows, interactive accents."
+      },
+      "primary-light": {
+        "$value": "#A78BFA",
+        "$description": "Violet 400. Lighter primary, used for accent text and hover states."
+      },
+      "accent-purple": {
+        "$value": "#A855F7",
+        "$description": "Purple 500. Secondary purple accent in gradients and highlights."
+      },
+      "secondary": {
+        "$value": "#2DD4BF",
+        "$description": "Teal. Secondary accent — the violet→teal gradient is the signature pairing."
+      },
+      "secondary-light": {
+        "$value": "#5EEAD4",
+        "$description": "Teal 300. Lighter teal for accent text and hover states."
+      }
+    },
+    "background": {
+      "base": {
+        "$value": "#0A0A0F",
+        "$description": "Near-black. Page/canvas background."
+      },
+      "surface": {
+        "$value": "#12121A",
+        "$description": "Surface one level above base."
+      },
+      "elevated": {
+        "$value": "#1A1A25",
+        "$description": "Cards and elevated panels."
+      }
+    },
+    "text": {
+      "primary": {
+        "$value": "#F8FAFC",
+        "$description": "Primary text on dark backgrounds (near-white / slate 50)."
+      },
+      "secondary": {
+        "$value": "#94A3B8",
+        "$description": "Secondary text (slate 400)."
+      },
+      "muted": {
+        "$value": "#64748B",
+        "$description": "Muted text and quiet labels (slate 500)."
+      },
+      "gray": {
+        "$value": "#9CA3AF",
+        "$description": "Neutral gray text (gray 400)."
+      },
+      "light": {
+        "$value": "#E5E7EB",
+        "$description": "Light neutral for subtle text on dark (gray 200)."
+      }
+    },
+    "border": {
+      "default": {
+        "$value": "#FFFFFF1A",
+        "$description": "Default hairline border — white at 10% opacity."
+      },
+      "subtle": {
+        "$value": "#FFFFFF0D",
+        "$description": "Subtle divider — white at 5% opacity."
+      }
+    },
+    "semantic": {
+      "success": {
+        "$value": "#22C55E",
+        "$description": "Success / positive (green 500)."
+      },
+      "error": {
+        "$value": "#EF4444",
+        "$description": "Error / destructive (red 500)."
+      },
+      "warning": {
+        "$value": "#F59E0B",
+        "$description": "Warning / caution (amber 500)."
+      },
+      "info": {
+        "$value": "#3B82F6",
+        "$description": "Info and focus ring (blue 500)."
+      }
+    }
+  },
+  "gradient": {
+    "$type": "gradient",
+    "brand": {
+      "$value": [
+        { "color": "#8B5CF6", "position": 0 },
+        { "color": "#2DD4BF", "position": 1 }
+      ],
+      "$description": "Signature brand gradient: violet → teal. Default angle 135deg."
+    }
+  }
+}

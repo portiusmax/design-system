@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tyler Darrell — Color Tokens</title>
+<link rel="stylesheet" href="tokens/color.css">
+<style>
+  body { background: var(--color-bg-base); color: var(--color-text-primary);
+         font-family: system-ui, sans-serif; margin: 0; padding: 48px; }
+  h1 { font-weight: 700; }
+  h2 { color: var(--color-text-secondary); font-size: 14px; text-transform: uppercase;
+       letter-spacing: .08em; margin: 40px 0 16px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+  .sw { background: var(--color-bg-elevated); border: 1px solid var(--color-border-default);
+        border-radius: 12px; overflow: hidden; }
+  .chip { height: 88px; }
+  .meta { padding: 12px 14px; }
+  .meta .name { font-size: 13px; font-weight: 600; }
+  .meta .hex { font-size: 12px; color: var(--color-text-muted); font-family: ui-monospace, monospace; }
+  .gradient { height: 120px; border-radius: 12px; background: var(--gradient-brand);
+              border: 1px solid var(--color-border-default); }
+</style>
+</head>
+<body>
+  <h1>Tyler Darrell — Color Tokens</h1>
+
+  <h2>Signature gradient</h2>
+  <div class="gradient"></div>
+
+  <h2>Brand</h2>
+  <div class="grid" id="brand"></div>
+  <h2>Background</h2>
+  <div class="grid" id="bg"></div>
+  <h2>Text</h2>
+  <div class="grid" id="text"></div>
+  <h2>Semantic</h2>
+  <div class="grid" id="semantic"></div>
+
+<script>
+  const groups = {
+    brand: [["primary","#8B5CF6"],["primary-light","#A78BFA"],["accent-purple","#A855F7"],["secondary","#2DD4BF"],["secondary-light","#5EEAD4"]],
+    bg: [["base","#0A0A0F"],["surface","#12121A"],["elevated","#1A1A25"]],
+    text: [["primary","#F8FAFC"],["secondary","#94A3B8"],["muted","#64748B"],["gray","#9CA3AF"],["light","#E5E7EB"]],
+    semantic: [["success","#22C55E"],["error","#EF4444"],["warning","#F59E0B"],["info","#3B82F6"]]
+  };
+  for (const [id, items] of Object.entries(groups)) {
+    document.getElementById(id).innerHTML = items.map(([n,h]) =>
+      `<div class="sw"><div class="chip" style="background:${h}"></div>
+       <div class="meta"><div class="name">${n}</div><div class="hex">${h}</div></div></div>`).join("");
+  }
+</script>
+</body>
+</html>
