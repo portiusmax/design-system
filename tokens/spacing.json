@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schemas.designtokens.org/draft-2024",
+  "spacing": {
+    "$type": "dimension",
+    "$description": "4px base unit. Scale used for padding, margins, and gaps.",
+    "0":  { "$value": "0rem" },
+    "1":  { "$value": "0.25rem" },
+    "2":  { "$value": "0.5rem" },
+    "3":  { "$value": "0.75rem" },
+    "4":  { "$value": "1rem" },
+    "5":  { "$value": "1.25rem" },
+    "6":  { "$value": "1.5rem" },
+    "8":  { "$value": "2rem" },
+    "10": { "$value": "2.5rem" },
+    "12": { "$value": "3rem" },
+    "16": { "$value": "4rem" },
+    "20": { "$value": "5rem" },
+    "24": { "$value": "6rem" }
+  },
+  "container": {
+    "$type": "dimension",
+    "$description": "Max content widths.",
+    "prose":  { "$value": "65ch" },
+    "content":{ "$value": "1024px" },
+    "wide":   { "$value": "1280px" }
+  }
+}

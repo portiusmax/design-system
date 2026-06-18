@@ -3,52 +3,94 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tyler Darrell — Color Tokens</title>
-<link rel="stylesheet" href="tokens/color.css">
+<title>Tyler Darrell — Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens/tokens.css">
 <style>
   body { background: var(--color-bg-base); color: var(--color-text-primary);
-         font-family: system-ui, sans-serif; margin: 0; padding: 48px; }
-  h1 { font-weight: 700; }
-  h2 { color: var(--color-text-secondary); font-size: 14px; text-transform: uppercase;
-       letter-spacing: .08em; margin: 40px 0 16px; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+         font-family: var(--font-sans); margin: 0; padding: var(--space-12); }
+  h1 { font-size: var(--font-size-5xl); font-weight: var(--font-weight-bold);
+       letter-spacing: var(--letter-spacing-tight); margin: 0 0 var(--space-2); }
+  .lead { color: var(--color-text-secondary); margin: 0 0 var(--space-12); }
+  h2 { font-family: var(--font-mono); color: var(--color-brand-secondary-light);
+       font-size: var(--font-size-xs); text-transform: uppercase;
+       letter-spacing: var(--letter-spacing-wider); margin: var(--space-16) 0 var(--space-6); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: var(--space-4); }
   .sw { background: var(--color-bg-elevated); border: 1px solid var(--color-border-default);
-        border-radius: 12px; overflow: hidden; }
-  .chip { height: 88px; }
-  .meta { padding: 12px 14px; }
-  .meta .name { font-size: 13px; font-weight: 600; }
-  .meta .hex { font-size: 12px; color: var(--color-text-muted); font-family: ui-monospace, monospace; }
-  .gradient { height: 120px; border-radius: 12px; background: var(--gradient-brand);
-              border: 1px solid var(--color-border-default); }
+        border-radius: var(--radius-xl); overflow: hidden; }
+  .chip { height: 80px; }
+  .meta { padding: var(--space-3) var(--space-4); }
+  .meta .name { font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); }
+  .meta .hex { font-family: var(--font-mono); font-size: var(--font-size-xs); color: var(--color-text-muted); }
+  .gradient { height: 120px; border-radius: var(--radius-2xl); background: var(--gradient-brand); }
+  .type-row { border-bottom: 1px solid var(--color-border-subtle); padding: var(--space-3) 0;
+              display: flex; align-items: baseline; gap: var(--space-6); }
+  .type-row .tag { font-family: var(--font-mono); font-size: var(--font-size-xs);
+                   color: var(--color-text-muted); width: 90px; flex: none; }
+  .box-row { display: flex; flex-wrap: wrap; gap: var(--space-6); align-items: flex-end; }
+  .demo { background: var(--color-bg-elevated); border: 1px solid var(--color-border-default);
+          width: 96px; height: 96px; display: grid; place-items: center;
+          font-family: var(--font-mono); font-size: var(--font-size-xs); color: var(--color-text-muted); }
+  .btn { font-family: var(--font-sans); font-weight: var(--font-weight-semibold);
+         color: #0a0a0f; background: var(--gradient-brand); border: 0;
+         padding: var(--space-3) var(--space-6); border-radius: var(--radius-full);
+         box-shadow: var(--shadow-glow-brand); cursor: pointer;
+         transition: transform var(--duration-base) var(--ease-standard); }
+  .btn:hover { transform: translateY(-2px); }
 </style>
 </head>
 <body>
-  <h1>Tyler Darrell — Color Tokens</h1>
+  <h1>Tyler Darrell — Design System</h1>
+  <p class="lead">Dark theme · Space Grotesk + JetBrains Mono · violet → teal.</p>
 
   <h2>Signature gradient</h2>
   <div class="gradient"></div>
 
-  <h2>Brand</h2>
-  <div class="grid" id="brand"></div>
-  <h2>Background</h2>
-  <div class="grid" id="bg"></div>
-  <h2>Text</h2>
-  <div class="grid" id="text"></div>
-  <h2>Semantic</h2>
-  <div class="grid" id="semantic"></div>
+  <h2>Brand</h2><div class="grid" id="brand"></div>
+  <h2>Background</h2><div class="grid" id="bg"></div>
+  <h2>Text</h2><div class="grid" id="text"></div>
+  <h2>Semantic</h2><div class="grid" id="semantic"></div>
+
+  <h2>Type scale</h2>
+  <div id="type"></div>
+
+  <h2>Radius</h2>
+  <div class="box-row" id="radius"></div>
+
+  <h2>Shadow</h2>
+  <div class="box-row" id="shadow" style="gap:var(--space-12)"></div>
+
+  <h2>Button (gradient + glow + motion)</h2>
+  <button class="btn">Book a call →</button>
 
 <script>
-  const groups = {
+  const colors = {
     brand: [["primary","#8B5CF6"],["primary-light","#A78BFA"],["accent-purple","#A855F7"],["secondary","#2DD4BF"],["secondary-light","#5EEAD4"]],
     bg: [["base","#0A0A0F"],["surface","#12121A"],["elevated","#1A1A25"]],
     text: [["primary","#F8FAFC"],["secondary","#94A3B8"],["muted","#64748B"],["gray","#9CA3AF"],["light","#E5E7EB"]],
     semantic: [["success","#22C55E"],["error","#EF4444"],["warning","#F59E0B"],["info","#3B82F6"]]
   };
-  for (const [id, items] of Object.entries(groups)) {
+  for (const [id, items] of Object.entries(colors)) {
     document.getElementById(id).innerHTML = items.map(([n,h]) =>
       `<div class="sw"><div class="chip" style="background:${h}"></div>
        <div class="meta"><div class="name">${n}</div><div class="hex">${h}</div></div></div>`).join("");
   }
+
+  const type = [["display","6rem","700"],["h1","3.75rem","700"],["h2","3rem","700"],["h3","2.25rem","600"],
+    ["h4","1.875rem","600"],["h5","1.5rem","600"],["body","1rem","400"],["small","0.875rem","400"]];
+  document.getElementById("type").innerHTML = type.map(([n,s,w]) =>
+    `<div class="type-row"><span class="tag">${n} · ${s}</span>
+     <span style="font-size:${s};font-weight:${w};line-height:1.1">Behavior First</span></div>`).join("");
+
+  const radii = [["sm",".25rem"],["md",".375rem"],["lg",".5rem"],["xl",".75rem"],["2xl","1rem"],["full","9999px"]];
+  document.getElementById("radius").innerHTML = radii.map(([n,r]) =>
+    `<div class="demo" style="border-radius:${r}">${n}</div>`).join("");
+
+  const shadows = [["card"],["elevated"],["glow-brand"],["glow-violet"]];
+  document.getElementById("shadow").innerHTML = shadows.map(([n]) =>
+    `<div class="demo" style="box-shadow:var(--shadow-${n});border-radius:var(--radius-2xl)">${n}</div>`).join("");
 </script>
 </body>
 </html>

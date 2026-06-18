@@ -1,0 +1,39 @@
+{
+  "$schema": "https://schemas.designtokens.org/draft-2024",
+  "shadow": {
+    "$type": "shadow",
+    "lg": {
+      "$value": "0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1)",
+      "$description": "Standard raised element."
+    },
+    "xl": {
+      "$value": "0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1)",
+      "$description": "High elevation."
+    },
+    "card": {
+      "$value": "0 8px 32px rgba(0,0,0,0.3), inset 0 1px rgba(255,255,255,0.1)",
+      "$description": "Glass card — depth plus a top inner highlight."
+    },
+    "elevated": {
+      "$value": "0 20px 40px rgba(0,0,0,0.4), 0 0 60px rgba(168,85,247,0.1), inset 0 1px rgba(255,255,255,0.15)",
+      "$description": "Featured panel with a soft purple glow."
+    },
+    "glow-brand": {
+      "$value": "0 10px 30px rgba(168,85,247,0.4), 0 0 20px rgba(45,212,191,0.2)",
+      "$description": "Violet→teal glow for primary CTAs and hover."
+    },
+    "glow-violet": {
+      "$value": "0 0 60px rgba(139,92,246,0.25)",
+      "$description": "Ambient violet glow / focus emphasis."
+    }
+  },
+  "blur": {
+    "$type": "dimension",
+    "$description": "Backdrop and ambient blur amounts.",
+    "sm":  { "$value": "4px" },
+    "md":  { "$value": "8px" },
+    "lg":  { "$value": "24px" },
+    "xl":  { "$value": "60px" },
+    "2xl": { "$value": "100px" }
+  }
+}

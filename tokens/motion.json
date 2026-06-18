@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schemas.designtokens.org/draft-2024",
+  "duration": {
+    "$type": "duration",
+    "fast":   { "$value": "150ms" },
+    "base":   { "$value": "200ms" },
+    "slow":   { "$value": "300ms" },
+    "slower": { "$value": "500ms" }
+  },
+  "easing": {
+    "$type": "cubicBezier",
+    "standard": { "$value": [0.4, 0, 0.2, 1], "$description": "Default in-out for most transitions." },
+    "out":      { "$value": [0, 0, 0.2, 1], "$description": "Decelerate — entrances." }
+  }
+}

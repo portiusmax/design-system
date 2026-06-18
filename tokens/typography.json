@@ -1,0 +1,69 @@
+{
+  "$schema": "https://schemas.designtokens.org/draft-2024",
+  "font": {
+    "family": {
+      "$type": "fontFamily",
+      "sans": {
+        "$value": ["Space Grotesk", "system-ui", "sans-serif"],
+        "$description": "Primary / display typeface."
+      },
+      "mono": {
+        "$value": ["JetBrains Mono", "monospace"],
+        "$description": "Code, labels, and technical accents."
+      }
+    },
+    "weight": {
+      "$type": "fontWeight",
+      "regular": { "$value": 400 },
+      "medium": { "$value": 500 },
+      "semibold": { "$value": 600 },
+      "bold": { "$value": 700 }
+    }
+  },
+  "fontSize": {
+    "$type": "dimension",
+    "xs":   { "$value": "0.75rem" },
+    "sm":   { "$value": "0.875rem" },
+    "base": { "$value": "1rem" },
+    "lg":   { "$value": "1.125rem" },
+    "xl":   { "$value": "1.25rem" },
+    "2xl":  { "$value": "1.5rem" },
+    "3xl":  { "$value": "1.875rem" },
+    "4xl":  { "$value": "2.25rem" },
+    "5xl":  { "$value": "3rem" },
+    "6xl":  { "$value": "3.75rem" },
+    "7xl":  { "$value": "4.5rem" },
+    "8xl":  { "$value": "6rem" }
+  },
+  "lineHeight": {
+    "$type": "number",
+    "none":    { "$value": 1 },
+    "tight":   { "$value": 1.25 },
+    "snug":    { "$value": 1.375 },
+    "normal":  { "$value": 1.5 },
+    "relaxed": { "$value": 1.625 },
+    "loose":   { "$value": 2 }
+  },
+  "letterSpacing": {
+    "$type": "dimension",
+    "tight":  { "$value": "-0.02em" },
+    "normal": { "$value": "0em" },
+    "wide":   { "$value": "0.05em" },
+    "wider":  { "$value": "0.1em", "$description": "Uppercase eyebrow labels." }
+  },
+  "textStyle": {
+    "$description": "Composite roles. font/size/weight/line-height/tracking.",
+    "display": { "$value": { "fontFamily": "sans", "fontSize": "8xl", "fontWeight": "bold",     "lineHeight": "none",  "letterSpacing": "tight" } },
+    "h1":      { "$value": { "fontFamily": "sans", "fontSize": "6xl", "fontWeight": "bold",     "lineHeight": "none",  "letterSpacing": "tight" } },
+    "h2":      { "$value": { "fontFamily": "sans", "fontSize": "5xl", "fontWeight": "bold",     "lineHeight": "tight", "letterSpacing": "tight" } },
+    "h3":      { "$value": { "fontFamily": "sans", "fontSize": "4xl", "fontWeight": "semibold", "lineHeight": "tight", "letterSpacing": "normal" } },
+    "h4":      { "$value": { "fontFamily": "sans", "fontSize": "3xl", "fontWeight": "semibold", "lineHeight": "snug",  "letterSpacing": "normal" } },
+    "h5":      { "$value": { "fontFamily": "sans", "fontSize": "2xl", "fontWeight": "semibold", "lineHeight": "snug",  "letterSpacing": "normal" } },
+    "h6":      { "$value": { "fontFamily": "sans", "fontSize": "xl",  "fontWeight": "semibold", "lineHeight": "snug",  "letterSpacing": "normal" } },
+    "body-lg": { "$value": { "fontFamily": "sans", "fontSize": "lg",  "fontWeight": "regular",  "lineHeight": "relaxed","letterSpacing": "normal" } },
+    "body":    { "$value": { "fontFamily": "sans", "fontSize": "base","fontWeight": "regular",  "lineHeight": "relaxed","letterSpacing": "normal" } },
+    "small":   { "$value": { "fontFamily": "sans", "fontSize": "sm",  "fontWeight": "regular",  "lineHeight": "normal","letterSpacing": "normal" } },
+    "eyebrow": { "$value": { "fontFamily": "mono", "fontSize": "xs",  "fontWeight": "semibold", "lineHeight": "normal","letterSpacing": "wider" } },
+    "code":    { "$value": { "fontFamily": "mono", "fontSize": "sm",  "fontWeight": "regular",  "lineHeight": "normal","letterSpacing": "normal" } }
+  }
+}

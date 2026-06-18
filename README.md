@@ -1,68 +1,69 @@
 # Tyler Darrell — Design System
 
 The canonical design tokens for [tylerdarrell.com](https://tylerdarrell.com) and all brand assets.
-A **dark theme** built around a signature **violet → teal** gradient.
+A **dark theme** built on **Space Grotesk** + **JetBrains Mono**, around a signature **violet → teal** gradient.
 
-This repo is the single source of truth. Import it into Claude design (or any tool) by linking
-the raw token file.
+Every value here was extracted from the live site — this repo is the single source of truth.
 
-## How to import into Claude design
+## Import into Claude design
 
-Paste one of these raw links as the source:
+Paste a raw link as the source:
 
-- **W3C Design Tokens (recommended):**
-  `https://raw.githubusercontent.com/portiusmax/design-system/main/tokens/color.json`
-- **CSS variables:**
-  `https://raw.githubusercontent.com/portiusmax/design-system/main/tokens/color.css`
+- **Whole system (CSS variables) — recommended:**
+  `https://raw.githubusercontent.com/portiusmax/design-system/main/tokens/tokens.css`
+- **By domain (W3C Design Tokens / DTCG):**
+  - color · `…/main/tokens/color.json`
+  - typography · `…/main/tokens/typography.json`
+  - spacing · `…/main/tokens/spacing.json`
+  - radius · `…/main/tokens/radius.json`
+  - shadow · `…/main/tokens/shadow.json`
+  - motion · `…/main/tokens/motion.json`
 
-## Colors
+(Repo link for "connect a repo" fields: `https://github.com/portiusmax/design-system`)
 
-### Brand
-| Token | Hex | Role |
-|---|---|---|
-| `brand.primary` | `#8B5CF6` | Violet — primary brand, gradients, accents |
-| `brand.primary-light` | `#A78BFA` | Lighter violet — accent text, hover |
-| `brand.accent-purple` | `#A855F7` | Purple — secondary highlight |
-| `brand.secondary` | `#2DD4BF` | Teal — secondary accent |
-| `brand.secondary-light` | `#5EEAD4` | Lighter teal — accent text, hover |
+## What's inside
 
-### Background (dark)
-| Token | Hex | Role |
-|---|---|---|
-| `background.base` | `#0A0A0F` | Page / canvas |
-| `background.surface` | `#12121A` | One level up |
-| `background.elevated` | `#1A1A25` | Cards, panels |
+### 🎨 Color
+Brand violet `#8B5CF6` + teal `#2DD4BF`; dark backgrounds `#0A0A0F / #12121A / #1A1A25`;
+slate text ramp; semantic success/error/warning/info. Signature gradient violet→teal.
+→ full table in [`tokens/color.json`](tokens/color.json)
 
-### Text
-| Token | Hex | Role |
-|---|---|---|
-| `text.primary` | `#F8FAFC` | Primary text |
-| `text.secondary` | `#94A3B8` | Secondary text |
-| `text.muted` | `#64748B` | Muted / quiet labels |
-| `text.gray` | `#9CA3AF` | Neutral gray |
-| `text.light` | `#E5E7EB` | Subtle light text |
+### 🔤 Typography
+- **Sans / display:** Space Grotesk · **Mono:** JetBrains Mono
+- **Weights:** 400 / 500 / 600 / 700
+- **Scale:** xs `0.75` → 8xl `6rem` (12 steps)
+- **Roles:** display, h1–h6, body-lg, body, small, eyebrow (mono uppercase), code
+- Line-heights none→loose; tracking tight / normal / wide / wider
 
-### Border
-| Token | Value | Role |
-|---|---|---|
-| `border.default` | white @ 10% | Hairline borders |
-| `border.subtle` | white @ 5% | Subtle dividers |
+### 📐 Spacing
+4px base unit, `space-0` → `space-24` (6rem). Container widths: prose / content / wide.
 
-### Semantic
-| Token | Hex | Role |
-|---|---|---|
-| `semantic.success` | `#22C55E` | Success / positive |
-| `semantic.error` | `#EF4444` | Error / destructive |
-| `semantic.warning` | `#F59E0B` | Warning / caution |
-| `semantic.info` | `#3B82F6` | Info, focus ring |
+### ⬜ Radius
+`sm 0.25` · `md 0.375` · `lg 0.5` · `xl 0.75` · `2xl 1rem` (default card) · `full`
 
-### Signature gradient
-`gradient.brand` — `linear-gradient(135deg, #8B5CF6 0%, #2DD4BF 100%)` (violet → teal)
+### 🌑 Shadow & blur
+`lg`, `xl`, `card` (glass), `elevated` (purple glow), `glow-brand` (violet→teal), `glow-violet`.
+Backdrop blur sm→2xl.
+
+### ⚡ Motion
+Durations 150 / 200 / 300 / 500ms · easing `standard` cubic-bezier(.4,0,.2,1) and `out`.
 
 ## Files
-- `tokens/color.json` — W3C Design Tokens (DTCG) format. Source of truth.
-- `tokens/color.css` — CSS custom properties.
-- `preview.html` — open in a browser to see swatches.
+```
+tokens/
+  color.json        typography.json   spacing.json
+  radius.json       shadow.json       motion.json
+  color.css         tokens.css        ← full CSS variables
+tailwind.preset.js  ← drop-in Tailwind theme (site runs Tailwind)
+preview.html        ← open in a browser to see everything
+```
 
-## Roadmap
-Colors first. Next: typography, spacing, radii, shadows, and component tokens.
+### Using the Tailwind preset
+```js
+// tailwind.config.js
+module.exports = { presets: [require('./tailwind.preset.js')] }
+```
+
+## Status
+Complete first pass: color · typography · spacing · radius · shadow · motion.
+Next candidates: component tokens (buttons, cards, inputs) and a light-mode variant.
