@@ -11,6 +11,8 @@ Paste a raw link as the source:
 
 - **Whole system (CSS variables) — recommended:**
   `https://raw.githubusercontent.com/portiusmax/design-system/main/tokens/tokens.css`
+- **Motion layer (keyframes + utilities):**
+  `https://raw.githubusercontent.com/portiusmax/design-system/main/tokens/animation.css`
 - **By domain (W3C Design Tokens / DTCG):**
   - color · `…/main/tokens/color.json`
   - typography · `…/main/tokens/typography.json`
@@ -47,6 +49,10 @@ Backdrop blur sm→2xl.
 
 ### ⚡ Motion
 Durations 150 / 200 / 300 / 500ms · easing `standard` cubic-bezier(.4,0,.2,1) and `out`.
+Plus a **motion layer** (`tokens/animation.css`): keyframe loops + utility classes —
+living gradient, pulse-glow, float, spin, shimmer, fade-up, blur-in, and a kinetic
+word-reveal — all built on the motion tokens, with `prefers-reduced-motion` respected.
+The brand's motion DNA: deliberate, type-forward, violet→teal. See **`motion-lab.html`**.
 
 ## Files
 ```
@@ -54,8 +60,10 @@ tokens/
   color.json        typography.json   spacing.json
   radius.json       shadow.json       motion.json
   color.css         tokens.css        ← full CSS variables
+  animation.css     ← motion keyframes + utility classes
 tailwind.preset.js  ← drop-in Tailwind theme (site runs Tailwind)
 preview.html        ← open in a browser to see everything
+motion-lab.html     ← open to see the motion DNA in action
 ```
 
 ### Using the Tailwind preset

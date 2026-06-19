@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tyler Darrell — Motion Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens/tokens.css">
+<link rel="stylesheet" href="tokens/animation.css">
+<style>
+  body { background: var(--color-bg-base); color: var(--color-text-primary);
+         font-family: var(--font-sans); margin: 0; padding: var(--space-12); }
+  h1 { font-size: var(--font-size-4xl); font-weight: 700; letter-spacing: var(--letter-spacing-tight); margin: 0 0 var(--space-2); }
+  .lead { color: var(--color-text-secondary); margin: 0 0 var(--space-16); }
+  h2 { font-family: var(--font-mono); color: var(--color-brand-secondary-light); font-size: var(--font-size-xs);
+       text-transform: uppercase; letter-spacing: var(--letter-spacing-wider); margin: var(--space-16) 0 var(--space-6); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--space-8); }
+  .tile { display: grid; place-items: center; gap: var(--space-3); text-align: center; }
+  .label { font-size: var(--font-size-sm); color: var(--color-text-muted); }
+  .box { width: 130px; height: 130px; border-radius: var(--radius-2xl);
+         background: var(--color-bg-elevated); border: 1px solid var(--color-border-default); }
+
+  /* Kinetic headline stage */
+  .stage { background: var(--color-bg-surface); border: 1px solid var(--color-border-default);
+           border-radius: var(--radius-2xl); padding: var(--space-16) var(--space-8);
+           position: relative; overflow: hidden; }
+  .stage .gradient-bg { position: absolute; inset: 0; background: var(--gradient-brand);
+           background-size: 200% 200%; opacity: 0.14; animation: grad-shift 6s var(--ease-standard) infinite; }
+  .headline { position: relative; font-size: var(--font-size-5xl); font-weight: 700; line-height: 1.05;
+           letter-spacing: var(--letter-spacing-tight); text-align: center; }
+  .headline .accent { background: var(--gradient-brand); -webkit-background-clip: text;
+           background-clip: text; color: transparent; }
+  .replay { margin-top: var(--space-6); font-family: var(--font-mono); font-size: var(--font-size-xs);
+           color: var(--color-text-muted); background: none; border: 1px solid var(--color-border-default);
+           border-radius: var(--radius-full); padding: var(--space-2) var(--space-4); cursor: pointer; }
+
+  /* Brand sting */
+  .sting { position: relative; height: 220px; border-radius: var(--radius-2xl); overflow: hidden;
+           display: grid; place-items: center; background: var(--color-bg-base);
+           border: 1px solid var(--color-border-default); }
+  .sting .gradient-bg { position: absolute; inset: 0; background: var(--gradient-brand);
+           background-size: 200% 200%; opacity: 0.18; animation: grad-shift 5s var(--ease-standard) infinite; }
+  .sting .word { position: absolute; font-size: var(--font-size-4xl); font-weight: 700;
+           letter-spacing: var(--letter-spacing-tight); opacity: 0; }
+  .sting .w1 { animation: sting 4.5s var(--ease-out) infinite; }
+  .sting .w2 { animation: sting 4.5s var(--ease-out) 1.5s infinite; }
+  .sting .w3 { animation: sting 4.5s var(--ease-out) 3s infinite;
+               background: var(--gradient-brand); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  @keyframes sting {
+    0%   { opacity: 0; transform: translateY(12px) scale(.98); }
+    8%   { opacity: 1; transform: none; }
+    28%  { opacity: 1; transform: none; }
+    36%, 100% { opacity: 0; transform: translateY(-8px) scale(1.02); }
+  }
+
+  .btn { font-family: var(--font-sans); font-weight: 600; color: #0a0a0f; background: var(--gradient-brand);
+         border: 0; padding: var(--space-3) var(--space-6); border-radius: var(--radius-full);
+         box-shadow: var(--shadow-glow-brand); cursor: pointer;
+         transition: transform var(--duration-base) var(--ease-standard); }
+  .btn:hover { transform: translateY(-2px); }
+</style>
+</head>
+<body>
+  <h1>Motion Lab</h1>
+  <p class="lead">The brand's motion DNA — deliberate, type-forward, violet→teal. Everything below loops on the design-system tokens.</p>
+
+  <h2>Kinetic headline (word reveal)</h2>
+  <div class="stage">
+    <div class="gradient-bg"></div>
+    <div class="headline" id="headline"></div>
+  </div>
+  <button class="replay" onclick="renderHeadline()">↻ replay</button>
+
+  <h2>Brand sting · Behavior First → Build to Last → AI Ops</h2>
+  <div class="sting">
+    <div class="gradient-bg"></div>
+    <span class="word w1">Behavior First.</span>
+    <span class="word w2">Build to Last.</span>
+    <span class="word w3">AI Ops.</span>
+  </div>
+
+  <h2>Loop primitives</h2>
+  <div class="grid">
+    <div class="tile"><div class="box anim-gradient"></div><div class="label">living gradient</div></div>
+    <div class="tile"><div class="box anim-pulse-glow" style="background:var(--gradient-brand)"></div><div class="label">pulse glow</div></div>
+    <div class="tile"><div class="box anim-float" style="background:var(--color-brand-primary)"></div><div class="label">float</div></div>
+    <div class="tile"><div class="box anim-spin"></div><div class="label">spin</div></div>
+    <div class="tile"><div class="box anim-shimmer"></div><div class="label">shimmer</div></div>
+  </div>
+
+  <h2>CTA (gradient + glow + motion)</h2>
+  <button class="btn">Book a call →</button>
+
+<script>
+  function renderHeadline() {
+    const line = "Marketing is applied psychology.";
+    const accent = "psychology.";
+    const el = document.getElementById("headline");
+    el.innerHTML = line.split(" ").map((w, i) => {
+      const cls = accent.includes(w.toLowerCase()) ? "anim-word accent" : "anim-word";
+      return `<span class="${cls}" style="--i:${i}">${w}</span>`;
+    }).join(" ");
+  }
+  renderHeadline();
+</script>
+</body>
+</html>
